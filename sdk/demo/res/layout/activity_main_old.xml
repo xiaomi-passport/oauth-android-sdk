@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <GridLayout
+        android:layout_marginTop="30dp"
+        android:columnCount="2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <CheckBox
+            android:id="@+id/scopeProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_PROFILE" />
+
+        <CheckBox
+            android:id="@+id/scopeRelation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_RELATION" />
+
+        <CheckBox
+            android:id="@+id/scopeOpenId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_OPEN_ID" />
+
+        <CheckBox
+            android:id="@+id/scopePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_PHONE" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_marginTop="30dp"
+        android:columnCount="2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+
+        <Button
+            android:id="@+id/get_token_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="老API获取token\n（尽量不要用）"></Button>
+
+        <Button
+            android:id="@+id/get_code_old"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="老API获取code\n（尽量不要用）" />
+    </GridLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top" />
+    </ScrollView>
+
+</LinearLayout>

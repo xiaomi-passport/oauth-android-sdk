@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <GridLayout
+        android:columnCount="2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="appId" />
+
+        <EditText
+            android:id="@+id/appId"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:hint="appId" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="redirectUrl" />
+
+        <EditText
+            android:id="@+id/redirectUrl"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:hint="redirectUrl" />
+
+    </GridLayout>
+
+
+    <GridLayout
+        android:layout_marginTop="30dp"
+        android:columnCount="2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <CheckBox
+            android:id="@+id/nonMiui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NonMiui behavior" />
+
+        <CheckBox
+            android:id="@+id/skipConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Switch Account" />
+        <CheckBox
+            android:id="@+id/scopeProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_PROFILE" />
+
+        <CheckBox
+            android:id="@+id/scopeRelation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_RELATION" />
+
+        <CheckBox
+            android:id="@+id/scopeOpenId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_OPEN_ID" />
+
+        <CheckBox
+            android:id="@+id/scopePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCOPE_PHONE" />
+
+        <CheckBox
+            android:id="@+id/tryKeepCookies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="keep cookies" />
+
+    </GridLayout>
+
+    <GridLayout
+        android:layout_marginTop="30dp"
+        android:columnCount="2"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:id="@+id/get_token"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gettoken">
+
+            <requestFocus />
+        </Button>
+
+        <Button
+            android:id="@+id/get_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/getcode" />
+
+        <Button
+            android:id="@+id/profile_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile" />
+
+        <Button
+            android:id="@+id/relation_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relation" />
+
+        <Button
+            android:id="@+id/openid_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/openid" />
+
+        <Button
+            android:id="@+id/phone_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone" />
+    </GridLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top" />
+    </ScrollView>
+
+</LinearLayout>

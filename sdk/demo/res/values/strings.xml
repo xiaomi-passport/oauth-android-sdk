@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OpenAuthDemo</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="code_token">通过code获取accesstoken</string>
+    <string name="refresg_token">通过refreshtoken获取accesstoken</string>
+    <string name="test_mac">测试签名</string>
+    <string name="profile">获取个人名片</string>
+    <string name="relation">获取好友列表</string>
+    <string name="getcode">获取code</string>
+    <string name="gettoken">获取token</string>
+    <string name="title_activity_helper_activity_for_get_token_ut">HelperActivityForGetTokenUT</string>
+    <string name="saveResult">保存token等结果到SD卡</string>
+    <string name="openid">获取用户openId</string>
+    <string name="phone">获取用户电话号码</string>
+    <string name="demo_old_api">测试DeprecatedApi(不鼓励使用)</string>
+</resources>

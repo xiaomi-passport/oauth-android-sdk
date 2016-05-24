@@ -164,6 +164,15 @@ public class MainActivity extends Activity {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         if (item.getItemId() == R.id.oldApiDemo) {
             startActivity(new Intent(this, OldMainActivity.class));
+        } else if (item.getItemId() == R.id.customizeAuthorizeActivity) {
+            XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+                    .setAppId(getAppId())
+                    .setRedirectUrl(getRedirectUri())
+                    .setNoMiui(true) // set to true only because we want to simulate behavior on Non-MIUI ROM.
+                    .setScope(getScopeFromUi())
+                    .setCustomizedAuthorizeActivityClass(CustomizedAuthorizedActivity.class)
+                    .startGetAccessToken(this);
+            waitAndShowFutureResult(future);
         }
         return super.onMenuItemSelected(featureId, item);
     }

@@ -8,5 +8,7 @@
 
     <item android:id="@+id/oldApiDemo"
           android:title="老api兼容性demo" />
+    <item android:id="@+id/customizeAuthorizeActivity"
+        android:title="自定制授权界面demo" />
 
 </menu>

@@ -1,5 +1,7 @@
-# 1.2
+# 1.3
+- fix bug that AuthorizeActivity crashes on MIUI V6.4 and above version, which is intruduced in 1.2 version.
 
+# 1.2
 - fix bug that oauth may fail if redirectUrl has upper-case letters, which is introduced in 1.1.
 - fix bug that NoTitleBar-themed AuthorizeActivity may crash if network error is met, which is introduced in 1.1.
 - add XiaomiOAuthorize#setCustomizedAuthorizeActivityClass.

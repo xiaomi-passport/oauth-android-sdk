@@ -1,3 +1,6 @@
+#1.4
+- fix vulnerability that AuthorizeActivity can be DDOS-attacked by passing unrecognized Parceable in Intent's extra.
+
 # 1.3
 - fix bug that AuthorizeActivity crashes on MIUI V6.4 and above version, which is intruduced in 1.2 version.
 

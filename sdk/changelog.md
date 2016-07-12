@@ -1,3 +1,6 @@
+#1.4.1
+- fix vulnerability that AuthorizeActivity can be DDOS-attacked by passing unrecognized Serializable in Intent's extra.
+
 #1.4
 - fix vulnerability that AuthorizeActivity can be DDOS-attacked by passing unrecognized Parceable in Intent's extra.
 

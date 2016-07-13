@@ -1,3 +1,6 @@
+#1.4.2
+- fix bug that AuthorizeActivity may crash if the deprecated "static" version of XiaomiOAuthorize#startGetAccessToken()/startGetOAuth() are called. This bug is instroduced in 1.2 version.
+
 #1.4.1
 - fix vulnerability that AuthorizeActivity can be DDOS-attacked by passing unrecognized Serializable in Intent's extra.
 

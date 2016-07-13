@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: '../../..', include: ['oauth.1.4.1.jar'])
+    compile fileTree(dir: '../../..', include: ['oauth.1.4.2.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }

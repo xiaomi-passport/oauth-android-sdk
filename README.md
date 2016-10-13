@@ -71,6 +71,41 @@
     }
 ```
 
+5) MIUI下弹窗授权
+
+仅在MIUI系统下，并且用户已经登陆小米账号是会出现弹窗，否则返回XMAuthericationException
+
+```
+
+    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+        .setAppId(getAppId())
+        .setRedirectUrl(getRedirectUri())
+        .setScope(getScopeFromUi())
+        .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
+
+    // 接下来这一段必须在后台线程调用
+    try {
+        XiaomiOAuthResults result = future.getResult();
+
+        if (results.hasError()) {
+            int errorCode = results.getErrorCode();
+            String errorMessage = results.getErrorMessage();
+        } else {
+            String accessToken = results.getAccessToken();
+            String macKey = results.getMacKey();
+            String macAlgorithm = results.getMacAlgorithm();
+        }
+    } catch (IOException e1) {
+        // error
+    } catch (OperationCanceledException e1) {
+        // user cancel
+    } catch (XMAuthericationException e1) {
+        // error
+    }
+
+```
+
+
 
 如果希望用户无法切换帐号？
 ===
@@ -86,7 +121,7 @@ Scope是什么？应该怎么取值？
 
 简单来说，Scope代表了一个AccessToken的权限。当使用一个AccessToken去访问OpenApi时，只有该AccessToken的Scope和该OpenApi需要的权限对得上的时候，服务器才会返回正确的结果，否则会报错。
 代码中只有一个地方要用到Scope，那就是去拿AccessToken的时候。
-代码中Scope的值应该是多少？请参照http://dev.xiaomi.com/docs/passport/scope_list/，然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去活取用户的个人资料和好友信息，那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***。当然前提是，APP已经在预备步骤中，在dev.xiaomi.com上为该应用开启了相应的接口权限。
+代码中Scope的值应该是多少？请参照 http://dev.xiaomi.com/docs/passport/way/ 中“scope设置说明”一节，然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去活取用户的个人资料和好友信息，那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***。当然前提是，APP已经在预备步骤中，在dev.xiaomi.com上为该应用开启了相应的接口权限。
 
 
 更多OAuth资料？

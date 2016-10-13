@@ -136,6 +136,29 @@ public class MainActivity extends Activity {
                 waitAndShowFutureResult(future);
             }
         });
+
+        findViewById(R.id.fast_oauth_btn).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean skipConfirm = ((CheckBox) findViewById(R.id.skipConfirm)).isChecked();
+
+                    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+                            .setAppId(getAppId())
+                            .setRedirectUrl(getRedirectUri())
+                            .setScope(getScopeFromUi())
+                            .setSkipConfirm(skipConfirm) // 不调的话默认是false
+                            .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
+                    waitAndShowFutureResult(future);
+
+            }
+        });
+
+        XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+                .setAppId(getAppId())
+                .setRedirectUrl(getRedirectUri())
+                .setScope(getScopeFromUi())
+                .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
+        waitAndShowFutureResult(future);
     }
 
     private boolean getTryKeepCookies() {

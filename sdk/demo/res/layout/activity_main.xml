@@ -129,6 +129,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/phone" />
+
+        <Button
+            android:id="@+id/fast_oauth_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fast_oauth_btn" />
     </GridLayout>
 
     <ScrollView

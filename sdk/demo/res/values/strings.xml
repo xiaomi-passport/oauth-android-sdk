@@ -16,4 +16,6 @@
     <string name="openid">获取用户openId</string>
     <string name="phone">获取用户电话号码</string>
     <string name="demo_old_api">测试DeprecatedApi(不鼓励使用)</string>
+    <string name="fast_oauth_btn">对话框 Oauth</string>
+
 </resources>

@@ -71,9 +71,9 @@
     }
 ```
 
-5) MIUI下弹窗授权
+5) fastOAuth (可选)
 
-仅在MIUI系统下，并且用户已经登陆小米账号是会出现弹窗，否则返回XMAuthericationException
+调用这个接口可以在最新MIUI系统中用户登陆小米账号的情况下快速授权 - 通过miui的对话框样式。（在系统不支持时返回XMAuthericationException，未登录小米账号时简单返回错误码）
 
 ```
 

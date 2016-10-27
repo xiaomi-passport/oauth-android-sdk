@@ -36,6 +36,8 @@ public class MainActivity extends Activity {
 
     XiaomiOAuthResults results;
 
+    private AsyncTask waitResultTask;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,12 +155,14 @@ public class MainActivity extends Activity {
             }
         });
 
-        XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
-                .setAppId(getAppId())
-                .setRedirectUrl(getRedirectUri())
-                .setScope(getScopeFromUi())
-                .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
-        waitAndShowFutureResult(future);
+        if(savedInstanceState == null){
+            XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+                    .setAppId(getAppId())
+                    .setRedirectUrl(getRedirectUri())
+                    .setScope(getScopeFromUi())
+                    .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
+            waitAndShowFutureResult(future);
+        }
     }
 
     private boolean getTryKeepCookies() {
@@ -221,8 +225,16 @@ public class MainActivity extends Activity {
         return Arrays.copyOf(scopes, checkedCount);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(waitResultTask!=null && !waitResultTask.isCancelled()){
+            waitResultTask.cancel(false);
+        }
+    }
+
     private <V> void waitAndShowFutureResult(final XiaomiOAuthFuture<V> future) {
-        new AsyncTask<Void, Void, V>() {
+        waitResultTask = new AsyncTask<Void, Void, V>() {
             Exception e;
 
             @Override

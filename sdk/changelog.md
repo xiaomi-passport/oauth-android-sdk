@@ -1,3 +1,6 @@
+# 1.5.1
+- fix bugs
+
 # 1.5
 - fix Activity resource leak
 - add fastOAuth

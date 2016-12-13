@@ -1,33 +1,28 @@
 
 package com.xiaomi.account.openauth.demo.ui;
 
-import android.accounts.OperationCanceledException;
 import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.xiaomi.account.openauth.AuthorizeActivity;
-import com.xiaomi.account.openauth.XMAuthericationException;
 import com.xiaomi.account.openauth.XiaomiOAuthConstants;
-import com.xiaomi.account.openauth.XiaomiOAuthFuture;
 import com.xiaomi.account.openauth.XiaomiOAuthResults;
 import com.xiaomi.account.openauth.XiaomiOAuthorize;
 import com.xiaomi.account.openauth.demo.R;
 import com.xiaomi.auth.AuthConstants;
 
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
+@Deprecated
 public class OldMainActivity extends Activity {
 
     public static final Long appId = MainActivity.appId;

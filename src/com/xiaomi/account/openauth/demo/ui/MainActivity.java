@@ -29,20 +29,17 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class MainActivity extends Activity {
+    private static final String TAG = "OAuthDemoActivity";
 
     public static final Long appId = 179887661252608L;
     public static final String redirectUri = "http://xiaomi.com";
-    private static final String TAG = "OAuthDemoActivity";
-
     XiaomiOAuthResults results;
-
     private AsyncTask waitResultTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         ((EditText) findViewById(R.id.appId)).setText(String.valueOf(appId));
         ((EditText) findViewById(R.id.redirectUrl)).setText(redirectUri);
 
@@ -55,8 +52,10 @@ public class MainActivity extends Activity {
                         .setRedirectUrl(getRedirectUri())
                         .setScope(getScopeFromUi())
                         .setKeepCookies(getTryKeepCookies()) // 不调的话默认是false
-                        .setNoMiui(getNoMiui()) // 不调的话默认是false
+                        .setNoMiui(getNoMiui()) // 不调的话默认是false，不建议设置
                         .setSkipConfirm(skipConfirm) // 不调的话默认是false
+                        // 自定义非miui上的登录界面，设置actionbar、进度条等
+                        //.setCustomizedAuthorizeActivityClass(CustomizedAuthorizedActivity.class)
                         .startGetAccessToken(MainActivity.this);
                 waitAndShowFutureResult(future);
             }
@@ -174,11 +173,11 @@ public class MainActivity extends Activity {
     }
 
     private String getRedirectUri() {
-        return redirectUri;
+        return ((EditText) findViewById(R.id.redirectUrl)).getText().toString();
     }
 
     private Long getAppId() {
-        return appId;
+        return Long.getLong(((EditText) findViewById(R.id.appId)).getText().toString());
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.squareup.haha.perflib.Main;
 import com.xiaomi.account.openauth.XMAuthericationException;
 import com.xiaomi.account.openauth.XiaomiOAuthConstants;
 import com.xiaomi.account.openauth.XiaomiOAuthFuture;
@@ -173,11 +174,19 @@ public class MainActivity extends Activity {
     }
 
     private String getRedirectUri() {
-        return ((EditText) findViewById(R.id.redirectUrl)).getText().toString();
+        String uri = ((EditText) findViewById(R.id.redirectUrl)).getText().toString();
+        if (uri.isEmpty()) {
+            return MainActivity.redirectUri;
+        }
+        return uri;
     }
 
     private Long getAppId() {
-        return Long.getLong(((EditText) findViewById(R.id.appId)).getText().toString());
+        String appId = ((EditText) findViewById(R.id.appId)).getText().toString();
+        if (appId.isEmpty()) {
+            return MainActivity.appId;
+        }
+        return Long.valueOf(appId);
     }
 
     @Override

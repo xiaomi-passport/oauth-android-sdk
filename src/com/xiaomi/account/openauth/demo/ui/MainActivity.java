@@ -15,7 +15,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.squareup.haha.perflib.Main;
 import com.xiaomi.account.openauth.XMAuthericationException;
 import com.xiaomi.account.openauth.XiaomiOAuthConstants;
 import com.xiaomi.account.openauth.XiaomiOAuthFuture;
@@ -198,7 +197,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         if (item.getItemId() == R.id.oldApiDemo) {
-            startActivity(new Intent(this, OldMainActivity.class));
+//            startActivity(new Intent(this, OldMainActivity.class));
         } else if (item.getItemId() == R.id.customizeAuthorizeActivity) {
             XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
                     .setAppId(getAppId())

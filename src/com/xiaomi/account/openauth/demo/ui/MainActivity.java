@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xiaomi.account.openauth.XMAuthericationException;
 import com.xiaomi.account.openauth.XiaomiOAuthConstants;
@@ -27,6 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends Activity {
     private static final String TAG = "OAuthDemoActivity";
@@ -84,6 +87,10 @@ public class MainActivity extends Activity {
         findViewById(R.id.profile_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (results == null){
+                    Toast.makeText(MainActivity.this,"请先获取ｔｏｋｅｎ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 XiaomiOAuthFuture<String> future = new XiaomiOAuthorize()
                         .callOpenApi(MainActivity.this,
                                 getAppId(),
@@ -99,6 +106,10 @@ public class MainActivity extends Activity {
         findViewById(R.id.relation_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (results == null){
+                    Toast.makeText(MainActivity.this,"请先获取ｔｏｋｅｎ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 XiaomiOAuthFuture<String> future = new XiaomiOAuthorize()
                         .callOpenApi(MainActivity.this,
                                 getAppId(),
@@ -113,6 +124,10 @@ public class MainActivity extends Activity {
         findViewById(R.id.openid_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (results == null){
+                    Toast.makeText(MainActivity.this,"请先获取ｔｏｋｅｎ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 XiaomiOAuthFuture<String> future = new XiaomiOAuthorize()
                         .callOpenApi(MainActivity.this,
                                 getAppId(),
@@ -127,6 +142,10 @@ public class MainActivity extends Activity {
         findViewById(R.id.phone_btn).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (results == null){
+                    Toast.makeText(MainActivity.this,"请先获取ｔｏｋｅｎ",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 XiaomiOAuthFuture<String> future = new XiaomiOAuthorize()
                         .callOpenApi(MainActivity.this,
                                 getAppId(),
@@ -251,6 +270,7 @@ public class MainActivity extends Activity {
 
             @Override
             protected V doInBackground(Void... params) {
+                showResult("waiting for Future result getting...");
                 V v = null;
                 try {
                     v = future.getResult();
@@ -277,8 +297,10 @@ public class MainActivity extends Activity {
                     showResult("done and ... get no result :(");
                 }
             }
-        }.execute();
+        }.executeOnExecutor(mExecutor);
     }
+
+    Executor mExecutor = Executors.newCachedThreadPool();
 
     private void showResult(String text) {
         String timeFormatted = new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(System.currentTimeMillis()));

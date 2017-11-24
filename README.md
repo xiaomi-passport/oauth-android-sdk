@@ -16,6 +16,7 @@
 
 + sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，使用webview登录然后授权
 + setCustomizedAuthorizeActivityClass()可以自定义非miui上的登录界面，设置actionbar、进度条等，可参照demo中的CustomizedAuthorizedActivity。
++ setPhoneInfo()接入取号功能，需要开发者自定义实现PhoneInfo接口，可以参考demo实现类：MiAccountPhoneInfo
 
 ``` java
     XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()

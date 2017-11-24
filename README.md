@@ -21,6 +21,8 @@
     XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
          //开发者预先申请好的 AppID
         .setAppId(appID)
+        //接入取号功能，需要开发者自定义实现PhoneInfo接口，可以参考demo实现类：MiAccountPhoneInfo
+         .setPhoneInfo(new MiAccountPhoneInfo(getApplicationContext()))
          // 开发者预先申请时填好的 redirectUrl
         .setRedirectUrl(redirectUri)
         // int数组，可以用XiaomiOAuthConstants.SCOPE_*等常量

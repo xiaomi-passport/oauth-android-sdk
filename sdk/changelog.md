@@ -1,3 +1,6 @@
+# 1.6.6
+- update miui system account bind action
+
 # 1.5.1
 - fix bugs
 

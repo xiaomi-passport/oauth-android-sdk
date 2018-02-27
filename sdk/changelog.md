@@ -1,3 +1,6 @@
+# 1.6.8
+- 修复4.3上出现白屏的问题
+
 # 1.6.6
 - update miui system account bind action
 

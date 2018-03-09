@@ -35,7 +35,7 @@
 效果：sdk检测miui上用户已经登录系统帐号时，弹出对话框
 
 + miui版本支持： 8.2以上。 8.2以下/非miui上 future.getResult()时抛出XMAuthericationException
-+ 需已经登录系统账号，否则future.getResult()时抛出XMAuthericationException
++ 需已经登录系统账号，否则授权结果xiaomiOAuthResults.getErrorCode()返回错误码-1002
 
 ``` java
     XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()

@@ -29,8 +29,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: '../../sdk', include: ['xiaomi-oauth.1.6.8.jar'])
-//    compile 'com.xiaomi.account:oauth:1.6.9'
+//    compile fileTree(dir: '../../sdk', include: ['xiaomi-oauth.1.6.8.jar'])
+//    compile 'com.xiaomi.account:oauth:+'
+    compile project(":library")
+    compile 'com.xiaomi.account:phoneNumKeep:+'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }

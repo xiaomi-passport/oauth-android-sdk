@@ -1,11 +1,15 @@
 
 package com.xiaomi.account.openauth.demo.ui;
 
+import android.Manifest;
 import android.accounts.OperationCanceledException;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,6 +34,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import static android.content.pm.PackageManager.PERMISSION_DENIED;
 
 public class MainActivity extends Activity {
     private static final String TAG = "OAuthDemoActivity";
@@ -57,6 +63,7 @@ public class MainActivity extends Activity {
                         .setKeepCookies(getTryKeepCookies()) // 不调的话默认是false
                         .setNoMiui(getNoMiui()) // 不调的话默认是false，不建议设置
                         .setSkipConfirm(skipConfirm) // 不调的话默认是false
+                        .setPhoneNumAutoFill(MainActivity.this.getApplicationContext(), true)
                         // 自定义非miui上的登录界面，设置actionbar、进度条等
                         //.setCustomizedAuthorizeActivityClass(CustomizedAuthorizedActivity.class)
                         .startGetAccessToken(MainActivity.this);
@@ -181,6 +188,24 @@ public class MainActivity extends Activity {
                     .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
             waitAndShowFutureResult(future);
         }
+
+        requestPermission();
+    }
+
+    private void requestPermission() {
+        if (PermissionChecker.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_PHONE_STATE},
+            1000);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000 && PermissionChecker.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PERMISSION_DENIED) {
+            finish();
+        }
     }
 
     private boolean getTryKeepCookies() {
@@ -259,6 +284,7 @@ public class MainActivity extends Activity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private <V> void waitAndShowFutureResult(final XiaomiOAuthFuture<V> future) {
         waitResultTask = new AsyncTask<Void, Void, V>() {
             Exception e;
@@ -302,9 +328,14 @@ public class MainActivity extends Activity {
 
     Executor mExecutor = Executors.newCachedThreadPool();
 
-    private void showResult(String text) {
-        String timeFormatted = new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(System.currentTimeMillis()));
-        ((TextView) findViewById(R.id.content)).setText(timeFormatted + "\n" + text);
-        Log.v(TAG, "result:" + text);
+    private void showResult(final String text) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                String timeFormatted = new SimpleDateFormat("HH:mm:ss:SSS").format(new Date(System.currentTimeMillis()));
+                ((TextView) findViewById(R.id.content)).setText(timeFormatted + "\n" + text);
+                Log.v(TAG, "result:" + text);
+            }
+        });
     }
 }

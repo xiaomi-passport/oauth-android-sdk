@@ -85,6 +85,7 @@ public class MainActivity extends Activity {
                         .setKeepCookies(getTryKeepCookies()) // 不调的话默认是false
                         .setNoMiui(getNoMiui()) // 不调的话默认是false
                         .setSkipConfirm(skipConfirm) // 不调的话默认是false
+                        .setPhoneNumAutoFill(MainActivity.this.getApplicationContext(), true)
                         .startGetOAuthCode(MainActivity.this);
                 waitAndShowFutureResult(future);
             }

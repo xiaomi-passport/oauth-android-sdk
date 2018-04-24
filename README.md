@@ -14,8 +14,8 @@
 
 ## 3) 授权并获取AccessToken/code
 
-+ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，使用webview登录然后授权
-+ setCustomizedAuthorizeActivityClass()可以自定义非miui上的登录界面，设置actionbar、进度条等，可参照demo中的CustomizedAuthorizedActivity。
+#### 3.1 授权 
+sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，使用webview登录然后授权
 
 ``` java
     XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
@@ -31,22 +31,7 @@
         .startGetAccessToken(activity);
 ```
 
-#### fastOAuth - 在miui上以对话框方式授权 (可选)
-效果：sdk检测miui上用户已经登录系统帐号时，弹出对话框
-
-+ miui版本支持： 8.2以上。 8.2以下/非miui上 future.getResult()时抛出XMAuthericationException
-+ 需已经登录系统账号，否则授权结果xiaomiOAuthResults.getErrorCode()返回错误码-1002
-
-``` java
-    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
-        .setAppId(getAppId())
-        .setRedirectUrl(getRedirectUri())
-        .setScope(getScopeFromUi())
-        .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
-
-```
-
-#### 获取授权结果AccessToken/code (在后台线程调用)
+获取授权结果AccessToken/code (在后台线程调用)
 
 ``` java
     // 接下来这一段必须在后台线程调用
@@ -68,6 +53,43 @@
     } catch (XMAuthericationException e1) {
         // error
     }
+```
+
+#### 3.2 fastOAuth - 在miui上以对话框方式授权 (可选)
+效果：sdk检测miui上用户已经登录系统帐号时，弹出对话框
+
++ miui版本支持： 8.2以上。 8.2以下/非miui上 future.getResult()时抛出XMAuthericationException
++ 需已经登录系统账号，否则授权结果xiaomiOAuthResults.getErrorCode()返回错误码-1002
+
+``` java
+    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+        // ...
+        .fastOAuth(MainActivity.this, XiaomiOAuthorize.TYPE_TOKEN);
+
+```
+
+#### 3.3 使用webview登录授权时，自定义页面的activity (可选)
+setCustomizedAuthorizeActivityClass()可以自定义非miui上的登录界面，设置actionbar、进度条等，可参照demo中的CustomizedAuthorizedActivity。
+
+``` java
+    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+        // ...
+        .setCustomizedAuthorizeActivityClass(CustomizedAuthorizedActivity.class)
+        // ...
+```
+
+#### 3.4 使用webview登录授权时，自动填充手机号 (可选)
+添加依赖 
+`compile 'com.xiaomi.account:oauth:+'` 1.6.9 版本及以上
+`compile 'com.xiaomi.account:phoneNumKeep:+'`
+
+需要运行时权限 `<uses-permission android:name="android.permission.READ_PHONE_STATE" />`
+
+``` java
+    XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+        // ...
+        .setPhoneNumAutoFill(MainActivity.this.getApplicationContext(), true)
+        // ...
 ```
 
 ## 4) 使用AccessToken获取用户信息

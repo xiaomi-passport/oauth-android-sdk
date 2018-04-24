@@ -28,6 +28,10 @@ android {
     }
 }
 
+repositories {
+
+}
+
 dependencies {
 //    compile fileTree(dir: '../../sdk', include: ['xiaomi-oauth.1.6.8.jar'])
 //    compile 'com.xiaomi.account:oauth:+'

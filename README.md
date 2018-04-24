@@ -6,6 +6,17 @@
 
 ## 2) 在应用的里添加以下配置：
 
+添加依赖
+```groovy
+    repositories {
+        maven { url 'https://raw.githubusercontent.com/xiaomi-passport/maven-repository/master/releases' }
+    }
+    
+    dependencies {
+        compile 'com.xiaomi.account:oauth-android:1.6.9' // 使用gradle依赖，就不需要使用jar包了
+    }
+```
+
 AndroidManifest.xml
 ``` xml
     <uses-permission android:name="com.xiaomi.permission.AUTH_SERVICE" />
@@ -113,8 +124,14 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 添加依赖 
 
 ```groovy
-compile 'com.xiaomi.account:oauth:+' // 1.6.9 版本及以上
-compile 'com.xiaomi.account:phoneNumKeep:+'
+    repositories {
+        maven { url 'https://raw.githubusercontent.com/xiaomi-passport/maven-repository/master/releases' }
+    }
+    
+    dependencies {
+        compile 'com.xiaomi.account:oauth-android:1.6.9' // 1.6.9 版本及以上, 使用这种依赖就不需要oauth的jar包了
+        compile 'com.xiaomi.account:phoneNumKeep:0.4.4'
+    }
 ```
 
 
@@ -187,7 +204,7 @@ To create an account for your app on http://dev.xiaomi.com
 + Enable needed Open API
 
 ### 2. Integrating the following code in “AndroidManifest.xml”
-```xml
+``` xml
     <uses-permission android:name="com.xiaomi.permission.AUTH_SERVICE" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <activity android:name="com.xiaomi.account.openauth.AuthorizeActivity" />
@@ -198,7 +215,7 @@ To create an account for your app on http://dev.xiaomi.com
 + sdk is able to detect: if it’s on miui, taking system account to authorize; if it’s on other OEMs, taking webview to log in and then authorize  
 + setCustomizedAuthorizeActivityClass(): it’s able to customize login page UI on non-miui roms, like actionbar, loading bar etc., please refer to CustomizedAuthorizedActivity in the demo.
 
-```java
+``` java
 XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
          //The AppID you got from xiaomi.com
         .setAppId(appID)
@@ -219,7 +236,7 @@ Effect:  if sdk detect user has signed in with system account, the window will p
 + Support: miui v8.2+. On miui older than v8.2 and non-miui roms, future.getResult() will throw XMAuthericationException  
 + System account/Mi account has to be logged in, otherwise future.getResult() will throw XMAuthericationException
 
-```java
+``` java
 XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
         .setAppId(getAppId())
         .setRedirectUrl(getRedirectUri())
@@ -229,7 +246,7 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
 
 + Getting authorized AccessToken/Code (call on a background thread)
 
-```java
+``` java
 // Must call on the background thread
     try {
         XiaomiOAuthResults result = future.getResult();
@@ -255,7 +272,7 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
 
 Getting user card
 
-```java
+``` java
 // Could call on the UI thread
     XiaomiOAuthFuture<String> future = new XiaomiOAuthorize().callOpenApi(context,
         appId,
@@ -285,7 +302,7 @@ Getting user card
 + It will be impossible for user to change an account
 + The process of popping up authorizing page will be slow
 
-```java
+``` java
 XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
         .setSkipConfirm(true)
         // .setOtherParams...

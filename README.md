@@ -78,11 +78,9 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 只有该AccessToken的Scope和该OpenApi需要的权限对得上的时候，服务器才会返回正确的结果，否则会报错。
 代码中只有一个地方要用到Scope，那就是去拿AccessToken的时候。
 
-代码中Scope的值应该是多少？请参照 http://dev.xiaomi.com/docs/passport/way/ 中“scope设置说明”一节，
+代码中Scope的值应该是多少？请参照 dev.mi.com/console/doc/detail?pId=762，
 然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去活取用户的个人资料和好友信息，
-那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***。
-当然前提是，APP已经在预备步骤中，在dev.xiaomi.com上为该应用开启了相应的接口权限。
-
+那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***
 
 #### 3.3 使用webview登录授权时，自定义页面的activity (可选)
 可以自定义设置actionbar、进度条等，可参照demo中的CustomizedAuthorizedActivity。
@@ -171,14 +169,14 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
     }
 ```
 
-更多接口请在dev.mi.com查看
+更多接口请在 https://dev.mi.com/console/doc/detail?pId=713 查看
 
 ---------------
 
 
 更多OAuth资料？
 ===
-http://dev.xiaomi.com/docs/passport/user_guide
+https://dev.mi.com/console/doc/detail?pId=897
 
 
 

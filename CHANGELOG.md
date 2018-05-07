@@ -1,3 +1,6 @@
+# 1.7.0
+- 修复在三星手机上有时无法打开米家
+
 # 1.6.9
 - 支持通过米家进行oauth授权
 - 支持手机号自动填充
@@ -8,6 +11,9 @@
 
 # 1.6.6
 - update miui system account bind action
+
+# 1.6.4
+- support xiaomi shuidi platform
 
 # 1.5.1
 - fix bugs

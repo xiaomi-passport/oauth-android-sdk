@@ -2,7 +2,9 @@
 ===
 
 ## 1) 预备步骤
- 去 dev.xiaomi.com 中创建应用。步骤如下：登陆小米开放平台网页 -> ”管理控制台” -> ”手机及平板应用” -> ”创建应用” ->  填入应用名和包名 -> ”创建” -> 记下看到的AppID -> 页面下方找”帐号接入服务“ -> ”详情“ -> ”立即启用“ -> 填入“授权回调地址（URL）”(这里填入的url即是下文提到的*redirectUrl*) -> “启用“ -> 开启需要的开放接口。
+ dev.xiaomi.com 中创建应用，查看更多文档。
+ 
+ 有如何关于接入 Android oauth sdk 的问题或建议，可以在[issus](https://github.com/xiaomi-passport/oauth-android-sdk/issues)中提出。
 
 ## 2) 在应用的里添加以下配置：
 
@@ -26,7 +28,7 @@ AndroidManifest.xml
 
 ## 3) 授权并获取AccessToken/code
 
-#### 3.1 授权 
+### 3.1 授权
 sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，使用webview登录然后授权
 
 ``` java
@@ -63,7 +65,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
     }
 ```
 
-#### 3.2 设置 scope (可选)
+### 3.2 设置 scope (可选)
 设置授权的权限列表，不设置默认是全部权限。
   
 ``` java
@@ -82,7 +84,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去活取用户的个人资料和好友信息，
 那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***
 
-#### 3.3 使用webview登录授权时，自定义页面的activity (可选)
+### 3.3 使用webview登录授权时，自定义页面的activity (可选)
 可以自定义设置actionbar、进度条等，可参照demo中的CustomizedAuthorizedActivity。
 
 ``` java
@@ -93,7 +95,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
         // ...
 ```
 
-#### 3.4 当用户已经授权过，不会再让用户确认 (可选)
+### 3.4 当用户已经授权过，不会再让用户确认 (可选)
 当用户已经授权过，不会再让用户确认，用户此时无法切换帐号。
 如果用户没有授权过，会再次弹起授权页面
 
@@ -104,7 +106,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
         // ...
 ```
 
-#### 3.5 在miui上以对话框方式授权 (可选)
+### 3.5 在miui上以对话框方式授权 (可选)
 效果：sdk检测miui上用户已经登录系统帐号时，弹出对话框
 
 + miui版本支持： 8.2以上。 8.2以下/非miui上 future.getResult()时抛出XMAuthericationException
@@ -118,7 +120,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 ```
 
 
-#### 3.6 使用webview登录授权时，自动填充手机号 (可选)
+### 3.6 使用webview登录授权时，自动填充手机号 (可选)
 添加依赖 
 
 ```groovy
@@ -144,7 +146,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 
 ## 4) 使用AccessToken获取用户信息
 
-#### 获取用户名片
+获取用户名片
 
 ``` java
     // 这一句可以在UI线程调用
@@ -171,14 +173,12 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
 
 更多接口请在 https://dev.mi.com/console/doc/detail?pId=713 查看
 
----------------
 
+## 5) 更多OAuth资料？
 
-更多OAuth资料？
-===
 https://dev.mi.com/console/doc/detail?pId=897
 
-
+---------------
 
 # Oauth-Android-sdk
 ## Quick Start

@@ -1,3 +1,6 @@
+# 1.7.1
+- 修复fastOAuth总是返回code, 即使使用accessToken
+
 # 1.7.0
 - 修复在三星手机上有时无法打开米家
 
@@ -10,10 +13,10 @@
 - 修复4.3上出现白屏的问题
 
 # 1.6.6
-- update miui system account bind action
+- 支持通过miui9.5之后的系统帐号授权
 
 # 1.6.4
-- support xiaomi shuidi platform
+- 支持小爱音箱水滴平台
 
 # 1.5.1
 - fix bugs

@@ -15,7 +15,7 @@
     }
     
     dependencies {
-        compile 'com.xiaomi.account:oauth-android:1.7.0' // 使用gradle依赖，就不需要使用jar包了
+        compile 'com.xiaomi.account:oauth-android:1.7.1' // 1.6.9版本及以上, 使用gradle依赖，就不需要使用jar包了
     }
 ```
 
@@ -129,7 +129,7 @@ sdk会自行判断：在miui上，启动系统帐号进行授权；非miui上，
     }
     
     dependencies {
-        compile 'com.xiaomi.account:oauth-android:1.7.0' // 1.6.9 版本及以上, 使用这种依赖就不需要oauth的jar包了
+        compile 'com.xiaomi.account:oauth-android:1.7.1' // 1.6.9 版本及以上, 使用这种依赖就不需要oauth的jar包了
         compile 'com.xiaomi.account:phoneNumKeep:0.4.4'
     }
 ```

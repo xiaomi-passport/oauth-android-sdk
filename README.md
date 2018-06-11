@@ -2,7 +2,7 @@
 ===
 
 ## 1) 预备步骤
- dev.xiaomi.com 中创建应用，查看更多文档。
+ 在[小米开放平台](https://dev.mi.com/console/doc/detail?pId=897) 中创建应用，查看更多文档。
  
  有如何关于接入 Android oauth sdk 的问题或建议，可以在[issus](https://github.com/xiaomi-passport/oauth-android-sdk/issues)中提出。
 

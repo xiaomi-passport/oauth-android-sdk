@@ -22,7 +22,7 @@ android {
 
 dependencies {
 //    compile fileTree(dir: '../../sdk', include: ['xiaomi-oauth.1.6.8.jar'])
-    compile 'com.xiaomi.account:oauth-android:1.7.1'
+    compile 'com.xiaomi.account:oauth-android:latest.release'
 //    compile project(":library")
 //    compile 'com.xiaomi.account:phoneNumKeep:0.4.4'
     compile 'com.android.support:appcompat-v7:26.1.0'

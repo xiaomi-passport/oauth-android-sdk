@@ -180,6 +180,24 @@ try {
 
 https://dev.mi.com/console/doc/detail?pId=897
 
+## 6) 业务方接入log文档
+
+//app初始化
+public class DiagnosisDemoApplication extends Application {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // 初始化并设置日志类型
+        DiagnosisController.init(this, "oauth");
+    }
+}
+
+上层app打开诊断开关和信息页面
+
+import com.xiaomi.accountsdk.diagnosis.ui.PassportDiagnosisActivity;
+
+PassportDiagnosisActivity.start(MainActivity.this);
+
 ---------------
 
 # Oauth-Android-sdk

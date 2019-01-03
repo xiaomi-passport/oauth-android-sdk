@@ -181,7 +181,7 @@ try {
 https://dev.mi.com/console/doc/detail?pId=897
 
 ## 6) 业务方接入log文档
-
+``` java
 //app初始化
 public class DiagnosisDemoApplication extends Application {
     @Override
@@ -198,6 +198,7 @@ import com.xiaomi.accountsdk.diagnosis.ui.PassportDiagnosisActivity;
 
 PassportDiagnosisActivity.start(MainActivity.this);
 
+```
 ---------------
 
 # Oauth-Android-sdk

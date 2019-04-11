@@ -122,30 +122,6 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
 ```
 
 
-### 3.6 使用webview登录授权时，自动填充手机号 (可选)
-添加phoneNumKeep依赖 
-
-```groovy
-repositories {
-    maven { url 'https://raw.githubusercontent.com/xiaomi-passport/maven-repository/master/releases' }
-}
-
-dependencies {
-    compile 'com.xiaomi.account:oauth-android:latest.release' 
-    compile 'com.xiaomi.account:phoneNumKeep:0.4.4'
-}
-```
-
-
-需要运行时权限 `<uses-permission android:name="android.permission.READ_PHONE_STATE" />`
-
-``` java
-XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
-    // ...
-    .setPhoneNumAutoFill(MainActivity.this.getApplicationContext(), true)
-    // ...
-```
-
 ## 4) 使用AccessToken获取用户信息
 
 获取用户名片

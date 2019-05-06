@@ -83,7 +83,7 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
 代码中只有一个地方要用到Scope，那就是去拿AccessToken的时候。
 
 代码中Scope的值应该是多少？请参照 dev.mi.com/console/doc/detail?pId=762，
-然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去活取用户的个人资料和好友信息，
+然后根据APP需要访问到的API去决定用哪些scope。比如，我将用AccessToken去获取用户的个人资料和好友信息，
 那么我的scope就应该是1和3。也可以用SDK中预定义好的常量XiaomiOAuthConstants.SCOPE_***
 
 ### 3.3 使用webview登录授权时，自定义页面的activity (可选)

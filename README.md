@@ -121,6 +121,14 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
 
 ```
 
+### 3.6 使用高安全级别（系统浏览器登录）
+
+``` java
+XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
+    // ...
+   .setUseSystemBrowserLogin(true);
+
+```
 
 ## 4) 使用AccessToken获取用户信息
 

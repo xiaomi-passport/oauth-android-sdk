@@ -42,8 +42,11 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
      // 开发者预先申请时填好的 redirectUrl
      // .setUseSystemAccountLogin(false) // 默认是true,,如果小米系统账号没有登录,则调起系统登录ui进行登录;如果设置为false ,如果小米系统账号没有登录,则返回错误吗code=-1004 代表系统账号未登录.
     .setRedirectUrl(redirectUri)
+     // 设置登录方式,例如"qr"为扫码登录
+    .setLoginType("qr")
      // 如果是要获得Code的方式，则把startGetAccessToken改成startGetOAuthCode即可。其他相同
     .startGetAccessToken(activity);
+    
 ```
 
 获取授权结果AccessToken/code (在后台线程调用)

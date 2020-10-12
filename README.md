@@ -22,9 +22,13 @@ dependencies {
     compile 'com.xiaomi.account:oauth-android:latest.release' // 总是依赖最新版本
 }
 ```
-注意:'com.xiaomi.account:oauth-android:3.1.1' 版本迁移至 https://packages.aliyun.com/repos/2028284-release-awMPKn/packages
+### 注意:
+
+'com.xiaomi.account:oauth-android:3.1.1' 版本迁移至 https://packages.aliyun.com/repos/2028284-release-awMPKn/packages
 若使用需要进行如下配置:
+
 (a) 在build.gradle中设置仓库的访问凭证
+``` java
 allprojects {
   repositories {
     maven {
@@ -46,10 +50,15 @@ allprojects {
     }
   }
 }
+
+```
+
 (b)配置包信息,在你的build.gradle文件中加入你要引用的文件信息。
+```java
 dependencies {
   compile 'com.xiaomi.account:oauth-android:3.1.1'
 }
+```
 
 AndroidManifest.xml
 ``` xml

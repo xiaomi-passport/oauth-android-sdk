@@ -22,6 +22,34 @@ dependencies {
     compile 'com.xiaomi.account:oauth-android:latest.release' // 总是依赖最新版本
 }
 ```
+注意:'com.xiaomi.account:oauth-android:3.1.1' 版本迁移至 https://packages.aliyun.com/repos/2028284-release-awMPKn/packages
+若使用需要进行如下配置:
+(a) 在build.gradle中设置仓库的访问凭证
+allprojects {
+  repositories {
+    maven {
+      url 'https://maven.aliyun.com/repository/public'
+    }
+    maven {
+      credentials {
+        username '************************'
+        password '************'
+      }
+      url 'https://packages.aliyun.com/maven/repository/2028284-release-awMPKn/'
+    }
+    maven {
+      credentials {
+        username '************************'
+        password '************'
+      }
+      url 'https://packages.aliyun.com/maven/repository/2028284-snapshot-gw4bH1/'
+    }
+  }
+}
+(b)配置包信息,在你的build.gradle文件中加入你要引用的文件信息。
+dependencies {
+  compile 'com.xiaomi.account:oauth-android:3.1.1'
+}
 
 AndroidManifest.xml
 ``` xml
@@ -44,6 +72,10 @@ XiaomiOAuthFuture<XiaomiOAuthResults> future = new XiaomiOAuthorize()
     .setRedirectUrl(redirectUri)
      // 设置登录方式,例如"qr"为扫码登录
     .setLoginType("qr")
+     // (3.1.1版本支持)业务使用了帐号的sdk可以在h5页面定制ui, 值是业务提供的
+    .setBannerBiz("test")
+     // (3.1.1版本支持)隐藏二维码登录中下方的3个app图标
+     .setHideQrApps(true)
      // 如果是要获得Code的方式，则把startGetAccessToken改成startGetOAuthCode即可。其他相同
     .startGetAccessToken(activity);
     

@@ -1,6 +1,9 @@
 快速开始
 ===
 
+# 此README已不再更新，点击[查看最新文档](https://mzd5tljlyv.feishu.cn/docs/doccnCKqdBhEUX5Lq5izm4Apswe#IQr3Hr)
+===
+
 ## 1) 预备步骤
  在[小米开放平台](https://dev.mi.com/console/doc/detail?pId=897) 中创建应用，查看更多文档。
  
